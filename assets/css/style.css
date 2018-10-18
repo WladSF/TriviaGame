@@ -1,0 +1,38 @@
+#quiz-area {
+    background-image: url("../images/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 70%;
+    text-align: center;
+    margin: 25px auto;
+    height: 600px;
+    border: solid 5px orange;
+    box-shadow: 10px 20px orange;
+}
+
+body {
+    background-image: url("../images/pic2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-family: lobster;
+    font-size: 100px;
+}
+
+#start {
+    width: 120px;
+    height: 60px;
+    font-size: 30px;
+    font-family: lobster;
+    color: darkorchid;
+    border-radius: 15px;
+    border: 3px solid black;
+    cursor: pointer; 
+}
+
+embed {
+    
+
+}
