@@ -53,11 +53,14 @@ var questions = [{
 //Create a 'timer' variable that will hold setInterval
 var timer;
 
-//Create the game object that will have 3 properties and methods
+var questionTracker = 0;
+
+//Create the game object that will have 3 properties and 4 methods
 var game = {
     correct: 0,
     incorrect: 0,
     counter: 120,
+    
 
     countDown: function(){
         game.counter--;
@@ -69,11 +72,30 @@ var game = {
         }
     },
 
-     done: function(){
+    done: function(){
 
-     }
+    },
+    
+    //After pressing the start button, the timer shows up, 
+    //and first questions and answers, and the 'start' button must disappear//
+    start: function(){
+        var timerDiv = $("<div>").text(game.counter);
+        var questionDiv = $("<div>").text(questions[questionTracker].question);
+        $("#quiz-area").append(timerDiv);
+        $("#quiz-area").append(questionDiv);
+        $("#quiz-area").append(questions[questionTracker].answers);
+        
+        questionTracker++;
+        console.log("gamestarted");
+    },
+
+    result: function(){
+
+    },
 }
-
+ $("#start").on("click", function (){
+     game.start();
+ })
 //Next methods to be crteated are done, start, result
 //Cfreate document.clcik events at the end dor each questions when the game starts
 
