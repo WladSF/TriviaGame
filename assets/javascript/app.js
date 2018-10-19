@@ -50,7 +50,7 @@ var questions = [{
 //Part ONE B
 
 //Create a 'timer' variable that will hold setInterval
-var timer;
+
 
 var userPick = null;
 
@@ -75,7 +75,7 @@ var game = {
     },
 
     done: function(){
-        clearInterval(counter);
+        clearInterval(timerInterval);
 
     },
     
@@ -84,6 +84,7 @@ var game = {
     start: function(){
         var timerDiv = $("<div>").text(game.counter);
         var questionDiv = $("<div>").text(questions[currentQuestion].question);
+        timerDiv.attr("id","counter-number");
         $("#quiz-area").append(timerDiv);
         $("#quiz-area").append(questionDiv);
         $("#quiz-area").append(questions[currentQuestion].answers);       
@@ -97,9 +98,8 @@ var game = {
 }
  $("#start").on("click", function (){
      game.start();
-     game.countDown();
      $(this).hide();
-     counter = setInterval(timer, 2000);
+     timerInterval = setInterval(game.countDown, 1000);
  })
 //Next methods to be crteated are done, start, result
 //Create document.clcik events at the end for each questions when the game starts
