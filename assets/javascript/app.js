@@ -79,6 +79,18 @@ var game = {
 
     },
     
+    loadQuestion: function() {
+
+        timer = setInterval(game.countdown, 1000);
+    
+        card.html("<h2>" + questions[this.currentQuestion].question + "</h2>");
+    
+        for (var i = 0; i < questions[this.currentQuestion].answers.length; i++) {
+          card.append("<button class='answer-button' id='button' data-name='" + questions[this.currentQuestion].answers[i]
+          + "'>" + questions[this.currentQuestion].answers[i] + "</button>");
+        }
+    },
+
     //After pressing the start button, the timer shows up, 
     //first questions and answers, and the 'start' button must disappear//
     start: function(){
@@ -101,7 +113,7 @@ var game = {
      $(this).hide();
      timerInterval = setInterval(game.countDown, 1000);
  })
-//Next methods to be crteated are done, start, result
+
 //Create document.clcik events at the end for each questions when the game starts
 
 
