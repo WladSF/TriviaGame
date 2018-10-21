@@ -1,13 +1,22 @@
 #quiz-area {
-    background-image: url("../images/background.png");
+    background-image: url("../images/letsdance.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
     width: 70%;
     text-align: center;
     margin: 25px auto;
-    height: 600px;
+    height: 650px;
     border: solid 5px orange;
-    box-shadow: 10px 20px orange;
+    box-shadow: 10px 10px orange;
+    
+}
+
+#quiz-area.showNextButton {
+    font-size: 60px;
+}
+
+#quiz-answers-area {
+    font-size: 60px;
 }
 
 body {
@@ -32,7 +41,37 @@ h1 {
     cursor: pointer; 
 }
 
-timerDiv {
+.timer {
+    width: 120px;
+    height: 30px;
     font-size: 30px;
+    font-family: lobster;
+    color: darkorchid;
+    border-radius: 15px;
+    border: 3px solid black;
+    background-color: white;
+    margin: 25px auto;
 }
 
+.question {
+    font-size: 60px;
+    font-weight: bolder;
+}
+
+#message {
+   font-size: 50px;
+   position: absolute;
+   top: 600px;
+   left: 560px;
+}
+
+
+#button {
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: 3px solid black;
+    background-color: thistle;
+    display: block;
+    margin: 0 auto; 
+}

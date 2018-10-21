@@ -1,9 +1,9 @@
 //Part ONE A
 
 //Initialize a variable called questions and make its value an array of objects. 
-//The object should have three properties : question, answer, correctAnswer.
+//The object should have three properties : question, answer, correct answer.
 //Question will have the value of a string, answer will have the value of an array with 4 elements, 
-//and correctAnswer will have the value of a string.
+//and correct answer will have the value of a number (index).
 
 var questions = [{
     question: "Which movie was not made in the 80's?",
@@ -15,7 +15,7 @@ var questions = [{
     correct: 2
 }, {
     question: "One of her earliest hits was 'I wanna dance with somebody:",
-    answers: ["Cher","Whitney Houston", "Britney Spears", "Tiffany"],
+    answers: ["Cher", "Whitney Houston", "Britney Spears", "Tiffany"],
     correct: 1
 }, {
     question: "Video game where the main character jumps over crocodiles, lagoons and scorpions in the jungle:",
@@ -49,7 +49,7 @@ var questions = [{
 
 //Part ONE B
 
-//Create a 'timer' variable that will hold setInterval
+//Create a variable that will hold setInterval
 
 
 var userPick = null;
@@ -61,60 +61,72 @@ var game = {
     correct: 0,
     incorrect: 0,
     unanswered: 0,
-    counter: 30,
-    
-
-    countDown: function(){
-        game.counter--;
-        $("#counter-number").html(game.counter);
-        
-        if (game.counter <= 0){
-            console.log("Your time is up!");
-            game.done();
-        }
-    },
-
-    done: function(){
-        clearInterval(timerInterval);
-
-    },
-    
-    loadQuestion: function() {
-
-        timer = setInterval(game.countdown, 1000);
-    
-        card.html("<h2>" + questions[this.currentQuestion].question + "</h2>");
-    
-        for (var i = 0; i < questions[this.currentQuestion].answers.length; i++) {
-          card.append("<button class='answer-button' id='button' data-name='" + questions[this.currentQuestion].answers[i]
-          + "'>" + questions[this.currentQuestion].answers[i] + "</button>");
-        }
-    },
+    counter: 3,
 
     //After pressing the start button, the timer shows up, 
     //first questions and answers, and the 'start' button must disappear//
-    start: function(){
-        var timerDiv = $("<div>").text(game.counter);
-        var questionDiv = $("<div>").text(questions[currentQuestion].question);
-        timerDiv.attr("id","counter-number");
+    start: function () {
+        var timerDiv = $("<div class='timer'>").text(game.counter);
+        var questionDiv = $("<div class='question'>");
+        timerDiv.attr("id", "counter-number");
         $("#quiz-area").append(timerDiv);
         $("#quiz-area").append(questionDiv);
-        $("#quiz-area").append(questions[currentQuestion].answers);       
-        currentQuestion++;
         console.log("gamestarted");
+        game.loadQuestion();
     },
 
-    result: function(){
+    countDown: function () {
+        game.counter--;
+        $("#counter-number").html(game.counter);
+
+
+        if (game.counter <= 0) {
+            game.timeUp();
+        }
+    },
+
+    timeUp: function () {
+        $("#message").text("Your time is up!");
+        clearInterval(timerInterval);
+        currentQuestion++;
+        game.showNextButton();
+    },
+
+    showNextButton: function () {
+        var nextButton = $("<button>").text("Next");
+        nextButton.click(function () {
+            $(this).hide()
+            game.loadQuestion();
+
+        })
+        $("#quiz-area").append(nextButton);
+    },
+
+    loadQuestion: function () {
+        game.counter = 3;
+        $("#counter-number").html(game.counter);
+        timerInterval = setInterval(game.countDown, 1000);
+        $(".question").text(questions[currentQuestion].question);
+        $("#quiz-answers-area").html(" ");
+        for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
+            $("#quiz-answers-area").append("<button class='answer-button' id='button' data-name='" + questions[currentQuestion].answers[i]
+                + "'>" + questions[currentQuestion].answers[i] + "</button>");
+        }
+    },
+
+    result: function () {
 
     },
 }
- $("#start").on("click", function (){
-     game.start();
-     $(this).hide();
-     timerInterval = setInterval(game.countDown, 1000);
- })
+
+$("#start").on("click", function () {
+    game.start();
+    $(this).hide();
+})
 
 //Create document.clcik events at the end for each questions when the game starts
+//Whenever the counter reaches 0, you write a message, set a 4 sec. delay, and load a new question with timer at 30
+
 
 
 
