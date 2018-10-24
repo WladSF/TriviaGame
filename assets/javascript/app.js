@@ -49,11 +49,7 @@ var questions = [{
 
 //Part ONE B
 
-//Create a variable that will hold setInterval
-
-
 var userPick = null;
-
 var currentQuestion = 0;
 
 //Create the game object that will have 4 properties and 4 methods
@@ -71,6 +67,7 @@ var game = {
         timerDiv.attr("id", "counter-number");
         $("#quiz-area").append(timerDiv);
         $("#quiz-area").append(questionDiv);
+        
         console.log("gamestarted");
         game.loadQuestion();
     },
@@ -79,10 +76,13 @@ var game = {
         game.counter--;
         $("#counter-number").html(game.counter);
 
-
         if (game.counter <= 0) {
             game.timeUp();
         }
+    },
+
+    compareAnswers: function () {
+
     },
 
     timeUp: function () {
@@ -90,12 +90,13 @@ var game = {
         clearInterval(timerInterval);
         currentQuestion++;
         game.showNextButton();
+      
     },
 
     showNextButton: function () {
-        var nextButton = $("<button>").text("Next");
+        var nextButton = $("<button id='button1'>").text("Next question");
         nextButton.click(function () {
-            $(this).hide()
+            $(this).hide();
             game.loadQuestion();
 
         })
@@ -114,7 +115,7 @@ var game = {
         }
     },
 
-    result: function () {
+    results: function () {
 
     },
 }
