@@ -81,36 +81,46 @@ var game = {
         }
     },
 
+    chosenAnswer: function (answerIndex) {
+        
+    },
+
+
     compareAnswers: function () {
 
+        if (userPick === questions[currentQuestion].correct) {
+        game.correct++;
+        $("#message").text("Congrats! You're right!");
+        }
+        else  {
+            game.incorrect++
+            $("#message").text("Too bad, you're wrong!");
+        }
+        setTimeout(function () {
+            game.loadQuestion ();
+            $('#message').text("")
+        }, 3000);
     },
 
     timeUp: function () {
         $("#message").text("Your time is up!");
         clearInterval(timerInterval);
         currentQuestion++;
-        game.showNextButton();
+        setTimeout(function () {
+            game.loadQuestion ();
+            $('#message').text("")
+        }, 3000);
       
-    },
-
-    showNextButton: function () {
-        var nextButton = $("<button id='button1'>").text("Next question");
-        nextButton.click(function () {
-            $(this).hide();
-            game.loadQuestion();
-
-        })
-        $("#quiz-area").append(nextButton);
     },
 
     loadQuestion: function () {
         game.counter = 3;
         $("#counter-number").html(game.counter);
-        timerInterval = setInterval(game.countDown, 1000);
+        // timerInterval = setInterval(game.countDown, 1000);
         $(".question").text(questions[currentQuestion].question);
         $("#quiz-answers-area").html(" ");
         for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
-            $("#quiz-answers-area").append("<button class='answer-button' id='button' data-name='" + questions[currentQuestion].answers[i]
+            $("#quiz-answers-area").append("<button class='answer-button' data-answerIndex='" + i
                 + "'>" + questions[currentQuestion].answers[i] + "</button>");
         }
     },
@@ -123,6 +133,11 @@ var game = {
 $("#start").on("click", function () {
     game.start();
     $(this).hide();
+});
+
+$("#quiz-answers-area").click(".answer-button", function (event) {
+    console.log($(event.target).data('answerIndex'))
+    // game.chosenAnswer();
 })
 
 //Create document.clcik events at the end for each questions when the game starts
