@@ -49,15 +49,14 @@ var questions = [{
 
 //Part ONE B
 
-var userPick = null;
-var currentQuestion = 0;
-
 //Create the game object that will have 4 properties and 4 methods
 var game = {
     correct: 0,
     incorrect: 0,
     unanswered: 0,
     counter: 3,
+    userPick: undefined,
+    currentQuestion: 0,
 
     //After pressing the start button, the timer shows up, 
     //first questions and answers, and the 'start' button must disappear//
@@ -81,14 +80,15 @@ var game = {
         }
     },
 
-    chosenAnswer: function (answerIndex) {
+    chosenAnswer: function () {
+        console.log($(this));
         
     },
 
 
     compareAnswers: function () {
 
-        if (userPick === questions[currentQuestion].correct) {
+        if (game.userPick === questions[game.currentQuestion].correct) {
         game.correct++;
         $("#message").text("Congrats! You're right!");
         }
@@ -117,11 +117,11 @@ var game = {
         game.counter = 3;
         $("#counter-number").html(game.counter);
         // timerInterval = setInterval(game.countDown, 1000);
-        $(".question").text(questions[currentQuestion].question);
+        $(".question").text(questions[game.currentQuestion].question);
         $("#quiz-answers-area").html(" ");
-        for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
+        for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
             $("#quiz-answers-area").append("<button class='answer-button' data-answerIndex='" + i
-                + "'>" + questions[currentQuestion].answers[i] + "</button>");
+                + "'>" + questions[game.currentQuestion].answers[i] + "</button>");
         }
     },
 
@@ -135,9 +135,13 @@ $("#start").on("click", function () {
     $(this).hide();
 });
 
-$("#quiz-answers-area").click(".answer-button", function (event) {
-    console.log($(event.target).data('answerIndex'))
-    // game.chosenAnswer();
+$("#quiz-answers-area").on("click", ".answer-button", function (event) {
+    game.userPick = $(this).attr('data-answerindex');
+    console.log(game.userPick);
+    game.compareAnswers();
+
+    // game.userPick = $(this)
+    // console.log($(this).attr("data-answerindex"));
 })
 
 //Create document.clcik events at the end for each questions when the game starts
