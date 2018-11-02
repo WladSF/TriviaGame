@@ -54,7 +54,7 @@ var game = {
     correct: 0,
     incorrect: 0,
     unanswered: 0,
-    counter: 3,
+    counter: 6,
     userPick: undefined,
     currentQuestion: 0,
 
@@ -80,15 +80,10 @@ var game = {
         }
     },
 
-    chosenAnswer: function () {
-        console.log($(this));
-        
-    },
-
 
     compareAnswers: function () {
-
-        if (game.userPick === questions[game.currentQuestion].correct) {
+        console.log(game.userPick);
+        if (parseInt(game.userPick) === questions[game.currentQuestion].correct) {
         game.correct++;
         $("#message").text("Congrats! You're right!");
         }
@@ -100,12 +95,13 @@ var game = {
             game.loadQuestion ();
             $('#message').text("")
         }, 3000);
+        clearInterval(timerInterval);
     },
 
     timeUp: function () {
         $("#message").text("Your time is up!");
         clearInterval(timerInterval);
-        currentQuestion++;
+        game.currentQuestion++;
         setTimeout(function () {
             game.loadQuestion ();
             $('#message').text("")
@@ -114,9 +110,9 @@ var game = {
     },
 
     loadQuestion: function () {
-        game.counter = 3;
+        game.counter = 6;
         $("#counter-number").html(game.counter);
-        // timerInterval = setInterval(game.countDown, 1000);
+        timerInterval = setInterval(game.countDown, 1000);
         $(".question").text(questions[game.currentQuestion].question);
         $("#quiz-answers-area").html(" ");
         for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
@@ -136,7 +132,7 @@ $("#start").on("click", function () {
 });
 
 $("#quiz-answers-area").on("click", ".answer-button", function (event) {
-    game.userPick = $(this).attr('data-answerindex');
+    game.userPick = $(this).attr('data-answerIndex');
     console.log(game.userPick);
     game.compareAnswers();
 
