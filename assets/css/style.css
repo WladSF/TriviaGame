@@ -58,7 +58,7 @@ h1 {
    left: 560px;
 }
 
-#button {
+button.answer-button{
     font-size: 30px;
     cursor: pointer;
     border-radius: 15px;
@@ -68,7 +68,7 @@ h1 {
     margin: 0 auto; 
 }
 
-#button1 {
+/* #button1 {
     font-size: 30px;
     cursor: pointer;
     border-radius: 15px;
@@ -79,4 +79,4 @@ h1 {
     color: darkorchid;
     font-family: lobster;
     
-}
+} */

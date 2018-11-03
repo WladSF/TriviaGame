@@ -63,9 +63,11 @@ var game = {
     start: function () {
         var timerDiv = $("<div class='timer'>").text(game.counter);
         var questionDiv = $("<div class='question'>");
+        var answerDiv = $("<div class='answers'>");
         timerDiv.attr("id", "counter-number");
         $("#quiz-area").append(timerDiv);
         $("#quiz-area").append(questionDiv);
+        $("#answers").append(answerDiv);
         
         console.log("gamestarted");
         game.loadQuestion();
@@ -91,7 +93,9 @@ var game = {
             game.incorrect++
             $("#message").text("Too bad, you're wrong!");
         }
+
         setTimeout(function () {
+            game.currentQuestion++;
             game.loadQuestion ();
             $('#message').text("")
         }, 3000);
@@ -112,7 +116,7 @@ var game = {
     loadQuestion: function () {
         game.counter = 6;
         $("#counter-number").html(game.counter);
-        timerInterval = setInterval(game.countDown, 1000);
+        // timerInterval = setInterval(game.countDown, 1000);
         $(".question").text(questions[game.currentQuestion].question);
         $("#quiz-answers-area").html(" ");
         for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
