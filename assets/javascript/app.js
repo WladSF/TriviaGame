@@ -60,19 +60,18 @@ var questions = [{
 //     correct: 2
 // }];
 
-//Part ONE B
+//Part B    
 
-//Create the game object that will have 4 properties and 4 methods
+//Create the game object 
 var game = {
     correct: 0,
     incorrect: 0,
     unanswered: 0,
-    counter: 6,
+    counter: 0,
     userPick: undefined,
     currentQuestion: 0,
 
-    //After pressing the start button, the timer shows up, 
-    //first questions and answers, and the 'start' button must disappear//
+    
     start: function () {
         var timerDiv = $("<div class='timer'>").text(game.counter);
         var questionDiv = $("<div class='question'>");
@@ -133,7 +132,7 @@ var game = {
         }
 
         else {
-            game.counter = 9;
+            game.counter = 3;
             $("#counter-number").html(game.counter);
             timerInterval = setInterval(game.countDown, 1000);
             $(".question").text(questions[game.currentQuestion].question);
@@ -148,6 +147,7 @@ var game = {
     results: function () {
         $("#quiz-area").empty();
         var results = $("<div class='result'>").text("Correct answers: " + game.correct);
+        $("<div class='incorrectAnswers'>").text("Incorrect answers: " + game.incorrect);
         $("#quiz-area").append(results);
     }
 }
