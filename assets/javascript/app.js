@@ -94,17 +94,16 @@ var game = {
         }
     },
 
-
     compareAnswers: function () {
         console.log(game.userPick);
         if (parseInt(game.userPick) === questions[game.currentQuestion].correct) {
             game.correct++;
             $("#message").text("Congrats! You're right!");
-        }
-        else {
+        }  else {
             game.incorrect++
             $("#message").text("Too bad, you're wrong!");
         }
+
 
         setTimeout(function () {
             game.currentQuestion++;
@@ -146,11 +145,28 @@ var game = {
 
     results: function () {
         $("#quiz-area").empty();
-        var results = $("<div class='result'>").text("Correct answers: " + game.correct);
-        $("<div class='incorrectAnswers'>").text("Incorrect answers: " + game.incorrect);
-        $("#quiz-area").append(results);
+        var resetBtn = $("<button class='reset'>").text("Restart");
+        var unanswered = $("<div class='unanswered'>").text("Unanswered: " + (questions.length - (this.incorrect + this.correct)));
+        var correctAnswers = $("<div class='correctAnswers'>").text("Correct answers: " + game.correct);
+        var incorrectAnswers = $("<div class='incorrectAnswers'>").text("Incorrect answers: " + game.incorrect);
+        $("#quiz-area").append(correctAnswers);
+        $("#quiz-area").append(incorrectAnswers);
+        $("#quiz-area").append(unanswered);
+        $("#quiz-area").append(resetBtn);
+    },
+
+    reset: function () {
+    this.correct = 0;
+    this.incorrect = 0;
+    this.unanswered = 0;
+    this.counter = 0;
+    this.userPick = undefined;
+    this.currentQuestion = 0;
+    this.loadQuestion();
     }
 }
+
+$(document).on("click", ".reset", game.reset.bind(game));
 
 $("#start").on("click", function () {
     game.start();
