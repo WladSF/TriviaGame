@@ -8,10 +8,8 @@
     margin: 25px auto;
     height: 650px;
     border: solid 5px orange;
-    box-shadow: 10px 10px orange;
-    
+    box-shadow: 10px 10px orange;   
 }
-
 
 body {
     background-image: url("../images/pic2.jpg");
@@ -91,7 +89,6 @@ p {
 div.correctAnswers, .incorrectAnswers, .unanswered, .resetBtn {
     font-size: 40px;
     margin-top: 20px;
- 
 }
 
 button.reset {

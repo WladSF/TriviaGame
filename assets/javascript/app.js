@@ -48,8 +48,6 @@ var questions = [{
     correct: 2
 }];
 
-//Part B    
-
 //Create the game object 
 var game = {
     correct: 0,
@@ -59,7 +57,7 @@ var game = {
     userPick: undefined,
     currentQuestion: 0,
 
-    
+
     start: function () {
         var timerDiv = $("<div class='timer'>").text(game.counter);
         var questionDiv = $("<div class='question'>");
@@ -87,11 +85,10 @@ var game = {
         if (parseInt(game.userPick) === questions[game.currentQuestion].correct) {
             game.correct++;
             $("#message").text("Congrats! You're right!");
-        }  else {
+        } else {
             game.incorrect++
             $("#message").text("Too bad, you're wrong!");
         }
-
 
         setTimeout(function () {
             game.currentQuestion++;
@@ -146,13 +143,13 @@ var game = {
     },
 
     reset: function () {
-    this.correct = 0;
-    this.incorrect = 0;
-    this.unanswered = 0;
-    this.counter = 0;
-    this.userPick = undefined;
-    this.currentQuestion = 0;
-    this.loadQuestion();
+        this.correct = 0;
+        this.incorrect = 0;
+        this.unanswered = 0;
+        this.counter = 0;
+        this.userPick = undefined;
+        this.currentQuestion = 0;
+        this.loadQuestion();
     }
 }
 
@@ -167,14 +164,6 @@ $(document).on("click", ".answer-button", function (event) {
     game.userPick = $(this).attr('data-answerIndex');
     console.log(game.userPick);
     game.compareAnswers();
-
-    // game.userPick = $(this)
-    // console.log($(this).attr("data-answerindex"));
 })
-
-//Create document.clcik events at the end for each questions when the game starts
-//Whenever the counter reaches 0, you write a message, set a 4 sec. delay, and load a new question with timer at 30
-
-
 
 
