@@ -4,61 +4,49 @@
 //The object should have three properties : question, answer, correct answer.
 //Question will have the value of a string, answer will have the value of an array with 4 elements, 
 //and correct answer will have the value of a number (index).
+
+
 var questions = [{
     question: "Which movie was not made in the 80's?",
     answers: ["Breakfast Club", "Revenge Of The Nerds", "Ferris Buillers Day Off", "Star Wars Episode 4 : A New Hope"],
     correct: 3
 }, {
-    question: "The Material Girl:",
-    answers: ["Cindy Lauper", "Bonnie Tyler", "Madonna", "Chaka Khan"],
+    question: "Who sings 'True Colors' ?",
+    answers: ["Madonna", "Bonnie Tyler", "Cindy Lauper", "Chaka Khan"],
     correct: 2
 }, {
-    question: "One of her earliest hits was 'I wanna dance with somebody:",
-    answers: ["Cher", "Whitney Houston", "Britney Spears", "Tiffany"],
+    question: "Who said 'Crack is wack' ? ",
+    answers: ["Snoop Dog", "Whitney Houston", "Britney Spears", "A-HA"],
     correct: 1
+}, {
+    question: "Name of first mainstream video game console:",
+    answers: ["Atari", "River Raid", "Enduro", "Pitfall"],
+    correct: 0
+}, {
+    question: "Which dance was made famous by a scene in 'Can't Buy me Love' (1987):",
+    answers: ["The Wave", "Break Dancing", "Tektonic", "African Anteater Ritual"],
+    correct: 3
+}, {
+    question: "Which dog had the craziest laugh?",
+    answers: ["Barfy", "Muttley", "Dug the Dog", "McBarker (Mr. Magoo)"],
+    correct: 1
+}, {
+    question: "What is the second best-selling album of all times ?",
+    answers: ["Pink Floyd - The Wall 1982", "Prince - Purple Rain 1984", "Madonna - Like a Virgin 1984", "Michael Jackson - Thriller 1983"],
+    correct: 3
+}, {
+    question: "MTV launched in August....",
+    answers: ["1980", "1981", "1983", "1985"],
+    correct: 2
+}, {
+    question: "What are two fashion statements from the 80's?",
+    answers: ["Crazy hair and shoulder pads", "Bell-bottom pants and hairspray", "High heels and snickers", "Colorful jewelry and sofisticated shoes"],
+    correct: 0
+}, {
+    question: "What is the name of the good Gremlin?",
+    answers: ["Goodie", "That cool gremlin", "Gizmo", "Mogwai"],
+    correct: 2
 }];
-
-// var questions = [{
-//     question: "Which movie was not made in the 80's?",
-//     answers: ["Breakfast Club", "Revenge Of The Nerds", "Ferris Buillers Day Off", "Star Wars Episode 4 : A New Hope"],
-//     correct: 3
-// }, {
-//     question: "The Material Girl:",
-//     answers: ["Cindy Lauper", "Bonnie Tyler", "Madonna", "Chaka Khan"],
-//     correct: 2
-// }, {
-//     question: "One of her earliest hits was 'I wanna dance with somebody:",
-//     answers: ["Cher", "Whitney Houston", "Britney Spears", "Tiffany"],
-//     correct: 1
-// }, {
-//     question: "Video game where the main character jumps over crocodiles, lagoons and scorpions in the jungle:",
-//     answers: ["Pitfall", "River Raid", "Enduro", "Atari"],
-//     correct: 0
-// }, {
-//     question: "Which dance was made famous by a scene in 'Can't Buy me Love' (1987):",
-//     answers: ["The Wave", "Break Dancing", "Tektonic", "African Anteater Ritual"],
-//     correct: 3
-// }, {
-//     question: "What dog had the craziest laugh?",
-//     answers: ["Barfy", "Muttley", "Dug the Dog", "McBarker (Mr. Magoo)"],
-//     correct: 1
-// }, {
-//     question: "What is the second best-selling album of all times ?",
-//     answers: ["Pink Floyd the Wall - 1982", "Prince purple Rain - 1984", "Madoona Like a Virgin - 1984", "Michael Jackson Thriller - 1983"],
-//     correct: 3
-// }, {
-//     question: "MTV launched in August of....",
-//     answers: ["1980", "1981", "1983", "1985"],
-//     correct: 2
-// }, {
-//     question: "What are two fashion statements from the 80's?",
-//     answers: ["Crazy hair and shoulder pads", "Bell-bottom pants and hairspray", "High heels and snickers", "Colorful jewelry and sofisticated shoes"],
-//     correct: 0
-// }, {
-//     question: "What is the name of the good Gremlin?",
-//     answers: ["Goodie", "That cool gremlin", "Gizmo", "Mogwai"],
-//     correct: 2
-// }];
 
 //Part B    
 
@@ -131,7 +119,7 @@ var game = {
         }
 
         else {
-            game.counter = 3;
+            game.counter = 25;
             $("#counter-number").html(game.counter);
             timerInterval = setInterval(game.countDown, 1000);
             $(".question").text(questions[game.currentQuestion].question);
@@ -145,10 +133,12 @@ var game = {
 
     results: function () {
         $("#quiz-area").empty();
+        var results = $("<p>RESULTS</p>")
         var resetBtn = $("<button class='reset'>").text("Restart");
         var unanswered = $("<div class='unanswered'>").text("Unanswered: " + (questions.length - (this.incorrect + this.correct)));
         var correctAnswers = $("<div class='correctAnswers'>").text("Correct answers: " + game.correct);
         var incorrectAnswers = $("<div class='incorrectAnswers'>").text("Incorrect answers: " + game.incorrect);
+        $("#quiz-area").append(results);
         $("#quiz-area").append(correctAnswers);
         $("#quiz-area").append(incorrectAnswers);
         $("#quiz-area").append(unanswered);

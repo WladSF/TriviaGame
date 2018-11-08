@@ -57,7 +57,7 @@ h1 {
    top: 600px;
    left: 560px;
    background-color:white;
-   width: 70%;
+   width: 50%;
    margin: 0 auto;
 }
 
@@ -80,4 +80,22 @@ button.answer-button{
 div.result {
     font-size: 60px;
     margin-top: 60px;
+}
+
+p {
+    font-size: 60px;
+    margin-top: 80px;
+}
+div.correctAnswers, .incorrectAnswers, .unanswered, .resetBtn {
+    font-size: 40px;
+    margin-top: 20px;
+ 
+}
+
+button.reset {
+    font-size: 25px;
+    margin-top: 35px;
+    cursor: pointer;
+    border: solid 5px black;
+    border-radius: 10px;
 }
