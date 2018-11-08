@@ -1,7 +1,8 @@
 #quiz-area {
     background-image: url("../images/letsdance.jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-attachment: fixed;
+    background-size: cover;;
     width: 70%;
     text-align: center;
     margin: 25px auto;
@@ -16,6 +17,7 @@ body {
     background-image: url("../images/pic2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 h1 {
