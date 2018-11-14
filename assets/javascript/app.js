@@ -1,10 +1,9 @@
-//Part ONE A
+//Super Trivia Quiz
 
 //Initialize a variable called questions and make its value an array of objects. 
-//The object should have three properties : question, answer, correct answer.
-//Question will have the value of a string, answer will have the value of an array with 4 elements, 
+//Create an object with the required properties.
+//Question will have the value of a string, answer will have the value of an array with 4 elements,
 //and correct answer will have the value of a number (index).
-
 
 var questions = [{
     question: "Which movie was not made in the 80's?",
@@ -48,30 +47,28 @@ var questions = [{
     correct: 2
 }];
 
-//Create the game object 
+//Create the game object (global variable) with necessary properties and all functions inside. 
 var game = {
     correct: 0,
     incorrect: 0,
     unanswered: 0,
     counter: 0,
-    userPick: undefined,
-    currentQuestion: 0,
+    userPick: undefined,            //User's answer choice.
+    currentQuestion: 0,             //Current question being displayed.
 
 
-    start: function () {
-        var timerDiv = $("<div class='timer'>").text(game.counter);
-        var questionDiv = $("<div class='question'>");
-        var answerDiv = $("<div class='answers' id='quiz-answers-area'>");
+    start: function () {                                                        //Function that starts the game after the 'start button is pressed
+        var timerDiv = $("<div class='timer'>").text(game.counter);             //Dinamically created a div, gave it a class name of 'timer', added to it the text of the 'counter' property, and stored it all inside a variable named timerDiv.
+        var questionDiv = $("<div class='question'>");                          //Dinamically created a div and gave it a class name of 'question'
+        var answerDiv = $("<div class='answers' id='quiz-answers-area'>");      //Dinamically created a div and gave it a class and id names.
         timerDiv.attr("id", "counter-number");
-        $("#quiz-area").append(timerDiv);
-        $("#quiz-area").append(questionDiv);
-        $("#quiz-area").append(answerDiv);
-
-        console.log("gamestarted");
-        game.loadQuestion();
+        $("#quiz-area").append(timerDiv);                                       //Selected the quiz area and appended the timerDiv to it, with game.counter inside.                                              
+        $("#quiz-area").append(questionDiv);                                    //Selected the quiz area and appended the questionDiv to it.      
+        $("#quiz-area").append(answerDiv);                                      //Selected the quiz area and appended the answerDiv to it.      
+        game.loadQuestion();                                                    //Called (activated) the loadQuestion function. 
     },
 
-    countDown: function () {
+    countDown: function () {                                                    //Create count down function.
         game.counter--;
         $("#counter-number").html(game.counter);
 
