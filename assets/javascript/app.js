@@ -53,15 +53,15 @@ var game = {
     incorrect: 0,
     unanswered: 0,
     counter: 0,
-    userPick: undefined,            //User's answer choice.
-    currentQuestion: 0,             //Current question being displayed.
+    userPick: undefined,                                                        //User's answer choice.
+    currentQuestion: 0,                                                         //Current question being displayed.
 
 
     start: function () {                                                        //Function that starts the game after the 'start button is pressed
         var timerDiv = $("<div class='timer'>").text(game.counter);             //Dinamically created a div, gave it a class name of 'timer', added to it the text of the 'counter' property, and stored it all inside a variable named timerDiv.
         var questionDiv = $("<div class='question'>");                          //Dinamically created a div and gave it a class name of 'question'
         var answerDiv = $("<div class='answers' id='quiz-answers-area'>");      //Dinamically created a div and gave it a class and id names.
-        timerDiv.attr("id", "counter-number");
+        timerDiv.attr("id", "counter-number");                                  //Set a 'counter-number' id attribute to the timerDiv.
         $("#quiz-area").append(timerDiv);                                       //Selected the quiz area and appended the timerDiv to it, with game.counter inside.                                              
         $("#quiz-area").append(questionDiv);                                    //Selected the quiz area and appended the questionDiv to it.      
         $("#quiz-area").append(answerDiv);                                      //Selected the quiz area and appended the answerDiv to it.      
