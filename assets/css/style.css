@@ -1,7 +1,6 @@
 #quiz-area {
     background-image: url("../images/letsdance.jpg");
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: cover;;
     width: 70%;
     text-align: center;
@@ -15,7 +14,6 @@ body {
     background-image: url("../images/pic2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
 }
 
 h1 {
@@ -56,9 +54,10 @@ h1 {
    font-size: 50px;
    top: 600px;
    left: 560px;
-   background-color:white;
+   /* background-color:white; */
    width: 50%;
    margin: 0 auto;
+   color: greenyellow;
 }
 
 button.answer-button{
