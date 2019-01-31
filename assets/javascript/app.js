@@ -162,5 +162,3 @@ $(document).on("click", ".answer-button", function (event) {
     console.log(game.userPick);
     game.compareAnswers();
 })
-
-
